@@ -1,0 +1,11 @@
+.profile__subtitle{
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+}
+
+@media screen and (max-width: 635px) {
+  .profile__subtitle{
+    margin: 0 auto;
+  }
+}
