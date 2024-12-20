@@ -19,3 +19,7 @@
     margin: 0 auto;
   }
 }
+
+.profile__title:hover{
+  cursor: pointer;
+}
