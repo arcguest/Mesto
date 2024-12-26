@@ -63,8 +63,10 @@ for (let i = 0; i < 6; i++) {
 
 
 elementRoot.addEventListener('click', (event) => {
+  const pickedCard = event.target.closest('.elements__element');
   const buttonLike = event.target.closest('.elements__element__like-button');
   const buttonShowImage = event.target.closest('.elements__element__image');
+  const buttonDeleteCard = event.target.closest('.elements__element__delete');
 
   if (buttonLike) {
     if (buttonLike.src.endsWith("images/like.svg")) {
@@ -93,6 +95,10 @@ elementRoot.addEventListener('click', (event) => {
         imageFullScreenButtonClose.style.left = `${imageFullScreenImage.offsetLeft+imageFullScreenImage.getBoundingClientRect().width}px`;
       }
     }
+  }
+
+  if (pickedCard && buttonDeleteCard) {
+    pickedCard.remove();
   }
 })
 
