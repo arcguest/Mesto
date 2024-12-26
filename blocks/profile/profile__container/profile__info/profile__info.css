@@ -1,22 +1,16 @@
 .profile__info{
-  max-width: 346px;
-  height: fit-content;
+  width: 346px;
+  min-height: 73px;
+  max-height: fit-content;
   align-self: center;
-  display: flex;
-  justify-content: space-between;
-  column-gap: 18px;
-  row-gap: 16px;
-  flex-wrap: wrap;
+  position: relative;
+  display: grid;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 935px) {
   .profile__info {
-    max-width: 240px;
+    width: 282px;
   }
 }
 
-@media screen and (max-width: 635px) {
-  .profile__info{
-
-  }
-}

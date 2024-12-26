@@ -21,58 +21,38 @@
         </div>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <img src="images/Edit Button.svg" alt="Редактировать" class="profile__edit-button">
+          <img src="images/editButton.svg" alt="Редактировать" class="profile__edit-button button__overlay_show">
           <span class="profile__subtitle">Исследователь океана</span>
         </div>
       </div>
-      <img src="images/Add Button.svg" alt="Кнопка добавления" class="profile__button">
+      <img src="images/addButton.svg" alt="Добавить" class="profile__button button__overlay_show">
     </section>
     <section class="elements">
-      <div class="elements__element">
-        <img src="images/karachaevsk.jpg" alt="Карачаевск" class="elements__element__image">
-        <div class="elements__element_bottom">
-          <h2 class="element__title">Карачаевск</h2>
-          <img src="images/like.svg" alt="Нравится" class="elements__element_like-button">
-        </div>
-      </div>
-      <div class="elements__element">
-        <img src="images/elbrus.jpg" alt="Гора Эльбрус" class="elements__element__image">
-        <div class="elements__element_bottom">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <img src="images/like.svg" alt="Нравится" class="elements__element_like-button">
-        </div>
-      </div>
-      <div class="elements__element">
-        <img src="images/dombai.jpg" alt="Домбай" class="elements__element__image">
-        <div class="elements__element_bottom">
-          <h2 class="element__title">Домбай</h2>
-          <img src="images/like.svg" alt="Нравится" class="elements__element_like-button">
-        </div>
-      </div>
-      <div class="elements__element">
-        <img src="images/elbrus.jpg" alt="Гора Эльбрус" class="elements__element__image">
-        <div class="elements__element_bottom">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <img src="images/like.svg" alt="Нравится" class="elements__element_like-button">
-        </div>
-      </div>
-      <div class="elements__element">
-        <img src="images/dombai.jpg" alt="Домбай" class="elements__element__image">
-        <div class="elements__element_bottom">
-          <h2 class="element__title">Домбай</h2>
-          <img src="images/like.svg" alt="Нравится" class="elements__element_like-button">
-        </div>
-      </div>
-      <div class="elements__element">
-        <img src="images/karachaevsk.jpg" alt="Карачаево-Черкессия" class="elements__element__image">
-        <div class="elements__element_bottom">
-          <h2 class="element__title">Карачаево-Черкессия</h2>
-          <img src="images/like.svg" alt="Нравится" class="elements__element_like-button">
-        </div>
-      </div>
     </section>
-    <footer class="footer"><span>&#xa9;</span> 2020 Mesto Russia</footer>
+    <footer class="footer"><span>&#xa9;</span> 2024 Mesto Russia</footer>
   </main>
+  <div class="body__overlay"></div>
+  <div class="body__imageFull">
+    <img src="" alt="" class="body__imageFull__image">
+    <img src="images/closeButton.svg" alt="Закрыть картинку" class="body__imageFull__buttons__button-close button__overlay_hide">
+    <div class="buttons">
+      
+    </div>
+    <h2 class="body__imageFull__title"></h2>
+  </div>
+  <form action="" class="body__form">
+    <h2 class="body__form__header">Редактировать профиль</h2>
+    <input type="text" name="name" class="body__form__input" placeholder="Жак-Ив-Кусто" required>
+    <input type="text" name="profession" class="body__form__input" placeholder="Исследователь океана" required>
+    <button class="body__form__button button__overlay_hide">Сохранить</button>
+    <img src="images/closeButton.svg" alt="Закрыть форму" class="body__form__button-close button__overlay_hide">
+  </form>
+  <script src="blocks/body/body__buttons/body__buttons.js"></script>
+  <script src="blocks/profile/profile__button/profile__button.js"></script>
+  <script src="blocks/profile/profile__container/profile__info/profile__edit-button/profile__edit-button.js"></script>
+  <script src="blocks/body/body__form/body__form__button/body__form__button.js"></script>
+  <script src="blocks/elements/elements.js"></script>
+  <script src="blocks/body/body__imageFull/buttons/button-close/button-close.js"></script>
 </body>
 
 </html>

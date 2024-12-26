@@ -1,7 +1,16 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
-@import url(./variables.css);
 @import url(../blocks/body/body.css);
+@import url(../blocks/body/body__overlay/body__overlay.css);
+@import url(../blocks/body/body__form/body__form.css);
+@import url(../blocks/body/body__form/body__form__input/body__form__input.css);
+@import url(../blocks/body/body__form/body__form__header/body__form__header.css);
+@import url(../blocks/body/body__form/body__form__button/body__form__button.css);
+@import url(../blocks/body/body__form/body__form__button-close/body__form__button-close.css);
+@import url(../blocks/body/body__imageFull/body__imageFull.css);
+@import url(../blocks/body/body__imageFull/buttons/button-close/button-close.css);
+@import url(../blocks/body/body__imageFull/body__imageFull__title/body__imageFull__title.css);
+@import url(../blocks/body/body__imageFull/body__imageFull__image/body__imageFull__image.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/header__logo/header__logo.css);
 @import url(../blocks/header/header__line/header__line.css);
@@ -11,7 +20,6 @@
 @import url(../blocks/profile/profile__container/profile__avatar/profile__avatar.css);
 @import url(../blocks/profile/profile__container/profile__avatar/profile__icon/profile__icon.css);
 @import url(../blocks/profile/profile__container/profile__info/profile__info.css);
-@import url(../blocks/profile/profile__container/profile__info/profile__header_container.css);
 @import url(../blocks/profile/profile__container/profile__info/profile__title/profile__title.css);
 @import url(../blocks/profile/profile__container/profile__info/profile__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/profile__container/profile__info/profile__edit-button/profile__edit-button.css);
@@ -19,7 +27,8 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/elements__element/elements__element.css);
 @import url(../blocks/elements/elements__element/element__image/element__image.css);
-@import url(../blocks/elements/elements__element/element_bottom/element_bottom.css);
-@import url(../blocks/elements/elements__element/element_bottom/element__title/element__title.css);
-@import url(../blocks/elements/elements__element/element_bottom/element_like-button/element_like-button.css);
+@import url(../blocks/elements/elements__element/element__bottom/element__bottom.css);
+@import url(../blocks/elements/elements__element/element__bottom/element__title/element__title.css);
+@import url(../blocks/elements/elements__element/element__bottom/element__like-button/element__like-button.css);
+@import url(../blocks/elements/elements__element/element__delete/element__delete.css);
 @import url(../blocks/footer/footer.css);

@@ -1,0 +1,25 @@
+.body__imageFull__buttons__button-close{
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  transition: opacity 0.2s ease-in-out, transform 0.175s ease-in-out;
+}
+
+.body__imageFull__buttons__button-close:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.body__imageFull__buttons__button-close:active{
+  transform: scale(95%);
+}
+
+@media screen and (max-width: 635px) {
+  .body__imageFull__buttons__button-close{
+    width: 20px;
+    height: 20px;
+    top: -26px;
+  }
+}

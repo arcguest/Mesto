@@ -1,0 +1,15 @@
+.elements__element__like-button{
+  height: fit-content;
+  align-self: center;
+  transition: opacity 0.25s ease-in-out, transform 0.17s ease-in-out;
+}
+
+.elements__element__like-button:hover{
+  opacity: 50%;
+  cursor: pointer;
+  transform: scale(125%);
+}
+
+.elements__element__like-button:active{
+  transform: scale(95%);
+}
