@@ -4,6 +4,7 @@ const imageFullScreen = document.querySelector('.body__imageFull');
 const imageFullScreenImage = document.querySelector('.body__imageFull__image');
 const imageFullScreenTitle= document.querySelector('.body__imageFull__title');
 const imageFullScreenButtonClose = document.querySelector('.body__imageFull__buttons__button-close');
+let currentImageIndex;
 
 const startImages = [];
 startImages.push('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
@@ -21,11 +22,17 @@ startImagesText.push('Озеро в горах');
 startImagesText.push('Гавайский лес');
 startImagesText.push('Еловая тайга');
 
-
+const cards = [];
 
 for (let i = 0; i < 6; i++) {
+  cards.push({
+    name: startImagesText[i],
+    image: startImages[i]
+  })
+
   const addCard = document.createElement('div');
   addCard.classList.add('elements__element');
+  addCard.dataset.index = i;
 
   const addBottom = document.createElement('div');
   addBottom.classList.add('elements__element__bottom');
@@ -57,10 +64,8 @@ for (let i = 0; i < 6; i++) {
   addBottom.appendChild(addTitle);
   addBottom.appendChild(addLikeButton);
 
-  elementRoot.appendChild(addCard);
+  elementRoot.insertBefore(addCard, elementRoot.firstChild);
 }
-
-
 
 elementRoot.addEventListener('click', (event) => {
   const pickedCard = event.target.closest('.elements__element');
@@ -77,8 +82,9 @@ elementRoot.addEventListener('click', (event) => {
   }
 
   if (buttonShowImage) {
-    imageFullScreenImage.src = buttonShowImage.src;
-    imageFullScreenTitle.textContent = buttonShowImage.alt;
+    currentImageIndex = parseInt(pickedCard.dataset.index, 10);
+    imageFullScreenImage.src = cards[currentImageIndex].image;
+    imageFullScreenTitle.textContent = cards[currentImageIndex].name;
 
     imageFullScreenImage.onload = function() {
       bodyOverlay.style.opacity = 1;
@@ -98,7 +104,15 @@ elementRoot.addEventListener('click', (event) => {
   }
 
   if (pickedCard && buttonDeleteCard) {
+    cards.splice(pickedCard.dataset.index, 1);
     pickedCard.remove();
-  }
+
+    const remainingCards = document.querySelectorAll('.elements__element');
+    remainingCards.forEach((card, newIndex) => {
+      card.dataset.index = remainingCards.length - 1 - newIndex;
+    })
+  } 
 })
+
+
 

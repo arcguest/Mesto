@@ -31,13 +31,13 @@
     </section>
     <footer class="footer"><span>&#xa9;</span> 2024 Mesto Russia</footer>
   </main>
-  <div class="body__overlay"></div>
+  <div class="body__overlay">
+    <img src="images/arrow.png" alt="Следующее фото" class="body__imageFull__buttons__arrow button__right">
+    <img src="images/arrow.png" alt="Предыдущее фото" class="body__imageFull__buttons__arrow button__left">
+  </div>
   <div class="body__imageFull">
     <img src="" alt="" class="body__imageFull__image">
     <img src="images/closeButton.svg" alt="Закрыть картинку" class="body__imageFull__buttons__button-close button__overlay_hide">
-    <div class="buttons">
-      
-    </div>
     <h2 class="body__imageFull__title"></h2>
   </div>
   <form action="" class="body__form">
@@ -47,12 +47,13 @@
     <button class="body__form__button button__overlay_hide">Сохранить</button>
     <img src="images/closeButton.svg" alt="Закрыть форму" class="body__form__button-close button__overlay_hide">
   </form>
+  <script src="blocks/elements/elements.js"></script>
   <script src="blocks/body/body__buttons/body__buttons.js"></script>
   <script src="blocks/profile/profile__button/profile__button.js"></script>
   <script src="blocks/profile/profile__container/profile__info/profile__edit-button/profile__edit-button.js"></script>
   <script src="blocks/body/body__form/body__form__button/body__form__button.js"></script>
-  <script src="blocks/elements/elements.js"></script>
   <script src="blocks/body/body__imageFull/buttons/button-close/button-close.js"></script>
+  <script src="blocks/body/body__imageFull/buttons/button-arrow/button-arrow.js"></script>
 </body>
 
 </html>

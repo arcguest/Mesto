@@ -28,10 +28,17 @@ buttonSubmit.addEventListener('click', (event) => {
     const newElementChildDiv = document.createElement('div');
     const newElementTitle = document.createElement('h2');
     const newElementLike = document.createElement('img');
+    const newDeleteButton = document.createElement('img');
+
+    newDeleteButton.classList.add('elements__element__delete');
+    newDeleteButton.src = 'images/delete.png';
+    newDeleteButton.style.top = '10px';
+    newDeleteButton.style.right = '10px';
 
     newElement.classList.add('elements__element');
     newElement.appendChild(newElementImg);
     newElement.appendChild(newElementChildDiv);
+    newElement.appendChild(newDeleteButton);
 
     newElementChildDiv.appendChild(newElementTitle);
     newElementChildDiv.appendChild(newElementLike);
@@ -41,7 +48,7 @@ buttonSubmit.addEventListener('click', (event) => {
     newElementImg.classList.add('elements__element__image');
 
     newElementImg.onerror = function () {
-      newElementImg.src = "images/elbrus.jpg";
+      newElementImg.src = "https://images.unsplash.com/photo-1731453171628-635e49577b59?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     }
 
     newElementTitle.classList.add('element__title');
@@ -54,6 +61,16 @@ buttonSubmit.addEventListener('click', (event) => {
     newElementChildDiv.classList.add('elements__element__bottom');
 
     parentElements.insertBefore(newElement, parentElements.firstChild);
-  }
 
+    cards.push({
+      name: textName,
+      image: textProfession
+    });
+
+    newElement.dataset.index = cards.length-1;
+  }
 });
+
+
+
+
