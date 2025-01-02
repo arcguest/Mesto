@@ -1,0 +1,6 @@
+.profile__info_inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}

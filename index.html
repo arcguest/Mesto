@@ -5,55 +5,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="pages/index.css">
+  <link rel="stylesheet" href="src/styles/index.css">
 </head>
 
 <body class="body">
   <header class="header">
-    <div class="logo header__logo"><img src="images/logo.svg" alt="Место логотип"></div>
+    <div class="logo header__logo"><img src="src/images/logo.svg" alt="Место логотип"></div>
     <div class="line header__line"></div>
   </header>
   <main class="page">
     <section class="profile">
       <div class="profile__container">
         <div class="profile__avatar">
-          <img src="images/Avatar.png" alt="Жак-Ив-Кусто фото" class="profile__icon">
+          <img src="src/images/Avatar.png" alt="Жак-Ив-Кусто фото" class="profile__icon">
         </div>
         <div class="profile__info">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <img src="images/editButton.svg" alt="Редактировать" class="profile__edit-button button__overlay_show">
-          <span class="profile__subtitle">Исследователь океана</span>
+          <div class="profile__info_inputs">
+            <h1 class="profile__info_inputs_title">Жак-Ив Кусто</h1>
+            <h2 class="profile__info_inputs_subtitle">Исследователь океана</h2>
+          </div>
+          <button class="profile__info_edit-btn-container button__overlay_show">
+            <img src="src/images/editButton.svg" alt="Редактировать" id="btnEditProfile"
+              class="profile__info_edit-btn-container_btn">
+          </button>
         </div>
       </div>
-      <img src="images/addButton.svg" alt="Добавить" class="profile__button button__overlay_show">
+      <button class="profile__button button__overlay_show" id="btnAddCard">
+        <img src="src/images/addButton.svg" alt="Иконка знака плюс">
+      </button>
     </section>
     <section class="elements">
     </section>
     <footer class="footer"><span>&#xa9;</span> 2024 Mesto Russia</footer>
   </main>
-  <div class="body__overlay">
-    <img src="images/arrow.png" alt="Следующее фото" class="body__imageFull__buttons__arrow button__right">
-    <img src="images/arrow.png" alt="Предыдущее фото" class="body__imageFull__buttons__arrow button__left">
+  <div class="body__modal">
+    <div class="body__overlay">
+    </div>
+    <form class="body__form">
+      <h2 class="body__form__header">Редактировать профиль</h2>
+      <input type="text" name="name" class="body__form__input" placeholder="Жак-Ив-Кусто" required>
+      <input type="text" name="profession" class="body__form__input" placeholder="Исследователь океана" required>
+      <button class="body__form__button ">Сохранить</button>
+      <img src="src/images/closeButton.svg" alt="Закрыть форму" class="body__form__button-close button__overlay_hide">
+    </form>
+    <div class="body__imageFull">
+      <img src="" alt="" class="body__imageFull__image">
+      <button class="body__imageFull__buttons__button-close button__overlay_hide">
+        <img src="src/images/closeButton.svg" alt="Закрыть картинку">
+      </button>
+      <h2 class="body__imageFull__title"></h2>
+      <button class="body__imageFull__buttons__arrow button__right">
+        <img src="src/images/arrow.png" alt="Следующее фото">
+      </button>
+      <button class="body__imageFull__buttons__arrow button__left">
+        <img src="src/images/arrow.png" alt="Предыдущее фото">
+      </button>
+    </div>
   </div>
-  <div class="body__imageFull">
-    <img src="" alt="" class="body__imageFull__image">
-    <img src="images/closeButton.svg" alt="Закрыть картинку" class="body__imageFull__buttons__button-close button__overlay_hide">
-    <h2 class="body__imageFull__title"></h2>
-  </div>
-  <form action="" class="body__form">
-    <h2 class="body__form__header">Редактировать профиль</h2>
-    <input type="text" name="name" class="body__form__input" placeholder="Жак-Ив-Кусто" required>
-    <input type="text" name="profession" class="body__form__input" placeholder="Исследователь океана" required>
-    <button class="body__form__button button__overlay_hide">Сохранить</button>
-    <img src="images/closeButton.svg" alt="Закрыть форму" class="body__form__button-close button__overlay_hide">
-  </form>
-  <script src="blocks/elements/elements.js"></script>
-  <script src="blocks/body/body__buttons/body__buttons.js"></script>
-  <script src="blocks/profile/profile__button/profile__button.js"></script>
-  <script src="blocks/profile/profile__container/profile__info/profile__edit-button/profile__edit-button.js"></script>
-  <script src="blocks/body/body__form/body__form__button/body__form__button.js"></script>
-  <script src="blocks/body/body__imageFull/buttons/button-close/button-close.js"></script>
-  <script src="blocks/body/body__imageFull/buttons/button-arrow/button-arrow.js"></script>
+  <script src="src/components/setCardTemplate.js"></script>
+  <script src="src/components/changeFullScreenImgs.js"></script>
+  <script src="src/components/saveFormData.js"></script>
+  <script src="src/components/changeModalVisibility.js"></script>
 </body>
 
 </html>
