@@ -13,6 +13,10 @@
   border-radius: 5px;
 }
 
+.body__form_disabled {
+  display: none;
+}
+
 @media screen and (max-width: 635px) {
   .body__form{
     width: 282px;

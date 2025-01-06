@@ -41,31 +41,43 @@
   <div class="body__modal">
     <div class="body__overlay">
     </div>
-    <form class="body__form">
+    <form class="body__form body__form_disabled">
       <h2 class="body__form__header">Редактировать профиль</h2>
       <input type="text" name="name" class="body__form__input" placeholder="Жак-Ив-Кусто" required>
       <input type="text" name="profession" class="body__form__input" placeholder="Исследователь океана" required>
       <button class="body__form__button ">Сохранить</button>
       <img src="src/images/closeButton.svg" alt="Закрыть форму" class="body__form__button-close button__overlay_hide">
     </form>
-    <div class="body__imageFull">
-      <img src="" alt="" class="body__imageFull__image">
-      <button class="body__imageFull__buttons__button-close button__overlay_hide">
-        <img src="src/images/closeButton.svg" alt="Закрыть картинку">
-      </button>
-      <h2 class="body__imageFull__title"></h2>
-      <button class="body__imageFull__buttons__arrow button__right">
-        <img src="src/images/arrow.png" alt="Следующее фото">
-      </button>
-      <button class="body__imageFull__buttons__arrow button__left">
-        <img src="src/images/arrow.png" alt="Предыдущее фото">
-      </button>
+    <div class="body__imageFull body__imageFull_disabled">
+      <div class="body__imageFull_container">     
+        <button class="body__imageFull__buttons__arrow button__left">
+        </button>
+        <div class="body__imageFull__image_wrapper">
+          <h2 class="body__imageFull__title"></h2>
+          <img src="" alt="" class="body__imageFull__image"> 
+          <button class="body__imageFull__buttons__button-close button__overlay_hide">
+            <img src="src/images/closeButton.svg" alt="Закрыть картинку">
+          </button>
+        </div>
+        <button class="body__imageFull__buttons__arrow button__right">
+        </button>
+      </div>
+    </div>
+    <div class="body__confirmation_card-removing body__confirmation_card-removing_disabled">
+      <h2 class="body__confirmation_card-removing_title">Удалить карточку?</h2>
+      <div class="body__confirmation_card-removing_btns">
+        <button class="body__confirmation_card-removing_btn body__confirmation_card-removing_btn_yes">Да</button>
+        <button class="body__confirmation_card-removing_btn body__confirmation_card-removing_btn_no">Нет</button>
+      </div>
     </div>
   </div>
+  <script src="src/components/variables.js"></script>
+  <script src="src/components/functions.js"></script>
   <script src="src/components/setCardTemplate.js"></script>
-  <script src="src/components/changeFullScreenImgs.js"></script>
   <script src="src/components/saveFormData.js"></script>
   <script src="src/components/changeModalVisibility.js"></script>
+  <script src="src/components/changeFullScreenImgs.js"></script>
+  <script src="src/components/confirmCardRemoving.js"></script>
 </body>
 
 </html>

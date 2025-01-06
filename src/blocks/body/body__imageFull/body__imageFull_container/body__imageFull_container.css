@@ -1,0 +1,7 @@
+.body__imageFull_container {
+  max-height: 75vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}

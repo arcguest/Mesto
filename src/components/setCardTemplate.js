@@ -1,12 +1,5 @@
 const setCardTemplate = () => {
-  const elementRoot = document.querySelector('.elements');
-  const modalWindow = document.querySelector('.body__modal');
-  const form = document.querySelector('.body__form');
-  const imageFullScreen = document.querySelector('.body__imageFull');
-  const imageFullScreenImage = document.querySelector('.body__imageFull__image');
-  const imageFullScreenTitle = document.querySelector('.body__imageFull__title');
-
-  const cardsArr = [
+  cardsArr = [
     {
       cardImg: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       cardTitle: 'Луг с цветами',
@@ -36,8 +29,7 @@ const setCardTemplate = () => {
   for (let i = 0; i < cardsArr.length; i++) {
     const addCard = document.createElement('div');
     addCard.classList.add('elements__element');
-    addCard.dataset.index = i;
-    addCard.id = "AA";
+    addCard.id = `cardId-${elementRoot.children.length}`;
 
     const addBottom = document.createElement('div');
     addBottom.classList.add('elements__element__bottom');
@@ -45,22 +37,26 @@ const setCardTemplate = () => {
     const addTitle = document.createElement('h2');
     addTitle.classList.add('element__title');
     addTitle.textContent = cardsArr[i].cardTitle;
+    addTitle.id = `txt-${elementRoot.children.length}`;
 
     const addLikeButton = document.createElement('img');
     addLikeButton.classList.add('elements__element__like-button');
     addLikeButton.src = 'src/images/like.svg';
     addLikeButton.alt = 'Нравится';
+    addLikeButton.id = `likeBtn-${elementRoot.children.length}`;
 
     const addImage = document.createElement('img');
     addImage.classList.add('elements__element__image');
     addImage.src = cardsArr[i].cardImg;
     addImage.alt = cardsArr[i].cardTitle;
+    addImage.id = `img-${elementRoot.children.length}`;
 
     const addDeleteButton = document.createElement('img');
     addDeleteButton.classList.add('elements__element__delete');
     addDeleteButton.src = 'src/images/delete.png';
     addDeleteButton.style.top = '10px';
     addDeleteButton.style.right = '10px';
+    addDeleteButton.id = `rmvBtn-${elementRoot.children.length}`;
 
     addCard.appendChild(addDeleteButton);
     addCard.appendChild(addImage);
@@ -71,43 +67,13 @@ const setCardTemplate = () => {
 
     elementRoot.insertBefore(addCard, elementRoot.firstChild);
   }
-
-  elementRoot.addEventListener('click', (event) => {
-    const pickedCard = event.target.closest('.elements__element');
-    const pickedCardImg = event.target.closest('.elements__element__image');
-    const buttonLike = event.target.closest('.elements__element__like-button');
-    const buttonDeleteCard = event.target.closest('.elements__element__delete');
-
-    if (buttonLike) {
-      if (buttonLike.src.endsWith("src/images/like.svg")) {
-        buttonLike.src = "src/images/likeBlack.svg";
-      } else {
-        buttonLike.src = "src/images/like.svg";
-      }
-    }
-
-    if (pickedCard && buttonDeleteCard) {
-      cardsArr.splice(pickedCard.dataset.index, 1);
-      pickedCard.remove();
-
-      const remainingCards = document.querySelectorAll('.elements__element');
-      remainingCards.forEach((card, newIndex) => {
-        card.dataset.index = remainingCards.length - 1 - newIndex;
-      })
-    }
-  })
-
-  const cardImages = document.querySelectorAll('.elements__element__image');
-
-  cardImages.forEach((img) => {
-    img.onclick = () => {
-      modalWindow.classList.add('body__modal_visible');
-      form.style.display = 'none';
-      imageFullScreen.style.display = 'grid';
-      imageFullScreenImage.src = img.src;
-      imageFullScreenTitle.textContent = img.alt;
-    }
-  })
+  
+  pickedCardArray = document.querySelectorAll('.elements__element');
+  
+  updateCardOnclickFunc();
+  updateLikeBtnOnclickFunc();
+  updateCardImageOnclickFunc();
+  removeCardFunc();
 }
 
 setCardTemplate();

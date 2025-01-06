@@ -1,0 +1,6 @@
+.body__confirmation_card-removing_btns {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+}

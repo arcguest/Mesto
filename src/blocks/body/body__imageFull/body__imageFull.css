@@ -1,5 +1,5 @@
 .body__imageFull{
-  max-width: 75vw;
+  max-width: 100vw;
   max-height: 75vh;
   position: fixed;
   top: 50%;
@@ -9,4 +9,8 @@
   z-index: 7;
   display: grid;
   align-content: center;
+}
+
+.body__imageFull_disabled {
+  display: none;
 }
