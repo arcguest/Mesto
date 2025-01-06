@@ -118,11 +118,18 @@ function switchImagesByKeyFunc(e) {
 }
 
 function switchImagesBySwipeFunc(e) {
-    let touchStart = e.changedTouches[0].screenX;
-    let touchEnd = e.changedTouches[0].screenX;
-    const threshold = 25;
+    let deltaX;
 
-    let deltaX = touchEnd - touchStart;
+    if (e.type === 'touchstart') {
+        touchStart = e.changedTouches[0].screenX;
+    } else if (e.type === 'touchend' && touchStart !== null) {
+        touchEnd = e.changedTouches[0].screenX;
+        deltaX = touchEnd - touchStart
+        touchStart = null;
+    }
+    
+    let nextIndex;
+    const threshold = 100;
 
     if (Math.abs(deltaX) > threshold) {
         if (deltaX > 0) {
@@ -133,6 +140,9 @@ function switchImagesBySwipeFunc(e) {
                 nextIndex = pickedCardId-1;
                 pickedCardId -= 1;
             }
+            
+            if (!nextIndex || nextIndex === NaN) return;
+            
             imageFullScreenImage.src = `${cardsArr[nextIndex].cardImg}`;
             imageFullScreenTitle.textContent = cardsArr[nextIndex].cardTitle;
         } else {
@@ -143,6 +153,9 @@ function switchImagesBySwipeFunc(e) {
                 nextIndex = pickedCardId+1;
                 pickedCardId += 1;
             }
+
+            if (!nextIndex || nextIndex === NaN) return;
+
             imageFullScreenImage.src = `${cardsArr[nextIndex].cardImg}`;
             imageFullScreenTitle.textContent = cardsArr[nextIndex].cardTitle;
         }

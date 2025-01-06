@@ -26,3 +26,6 @@ const textLink = document.querySelector('input[name="profession"]');
 
 const confirmBtnCardRmv = document.querySelector('.body__confirmation_card-removing'); 
 const confirmBtnCardRmvBtnArray = document.querySelectorAll('.body__confirmation_card-removing_btn');
+
+let touchStart;
+let touchEnd;
