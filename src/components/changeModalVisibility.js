@@ -2,21 +2,22 @@ const changeModalVisibility = () => {
 
   btnOverlayShow.forEach((btn) => {
     btn.onclick = () => {
-      openFormFunc();
+      openModalFunc();
 
       if (btn.classList.contains('profile__info_edit-btn-container')) {
-        profileTitle.textContent = "Редактировать профиль";
-        textName.value = titleText.textContent;
-        textLink.value = subtitleText.textContent;
+        formTitle.textContent = "Редактировать профиль";
+        formInputFirst.value = profileTitle.textContent;
+        formInputSecond.value = profileSubtitle.textContent;
         buttonSaveForm.textContent = "Сохранить";
       } else {
-        profileTitle.textContent = "Новое место";
-        textName.value = "";
-        textLink.value = "";
-        textName.placeholder = "Название";
-        textLink.placeholder = "Ссылка на картинку";
+        formTitle.textContent = "Новое место";
+        formInputFirst.value = "";
+        formInputSecond.value = "";
+        formInputFirst.placeholder = "Название";
+        formInputSecond.placeholder = "Ссылка на картинку";
         buttonSaveForm.textContent = "Добавить";
       }
+      hideScrollingBarFunc();
     }
   })
 

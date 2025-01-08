@@ -26,6 +26,8 @@ imageFullArrowsArray.forEach((btn) => {
 })
 
 document.addEventListener('keyup', switchImagesByKeyFunc);
-document.addEventListener('touchstart', switchImagesBySwipeFunc);
-document.addEventListener('touchend', switchImagesBySwipeFunc);
+imageFullScreenContainer.addEventListener('touchstart', switchImagesBySwipeFunc, { passive: false });
+imageFullScreenContainer.addEventListener('touchmove', switchImagesBySwipeFunc, { passive: true });
+imageFullScreenContainer.addEventListener('touchend', switchImagesBySwipeFunc, { passive: false });
+imageFullScreenContainer.addEventListener('wheel', switchImagesByWheelFunc, { passive: false });
 

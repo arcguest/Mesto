@@ -1,12 +1,7 @@
 const saveFormData = () => {
-  const buttonSubmit = document.querySelector('.body__form__button');
-  const formInputs = document.querySelectorAll('.body__form__input');
-  const modalWindow = document.querySelector('.body__modal');
-  const buttonSaveForm = document.querySelector('.body__form__button');
-
   formInputs.forEach((input) => {
     input.oninput = () => {
-      if (Array.from(formInputs).some((el) => el.value.length < 3)) return buttonSubmit.classList.add('body__form__button_disabled');
+      if (Array.from(formInputs).some((el) => el.value.length < 2)) return buttonSubmit.classList.add('body__form__button_disabled');
 
       buttonSubmit.classList.remove('body__form__button_disabled');
     }
@@ -15,21 +10,17 @@ const saveFormData = () => {
   buttonSubmit.onclick = (e) => {
     e.preventDefault();
 
-    const textName = document.querySelector('input[name="name"]').value;
-    const textProfession = document.querySelector('input[name="profession"]').value;
-
     if (buttonSaveForm.textContent === "Сохранить") {
-      if (textName) {
-        const profileName = document.querySelector('.profile__info_inputs_title');
-        const profileProfession = document.querySelector('.profile__info_inputs_subtitle');
+      if (formInputFirst) {
 
-        if (profileName) {
-          profileName.textContent = textName;
+        if (profileTitle) {
+          profileTitle.textContent = formInputFirst.value;
         };
 
-        if (profileProfession) {
-          profileProfession.textContent = textProfession;
+        if (profileSubtitle) {
+          profileSubtitle.textContent = formInputSecond.value;
         };
+
       };
     } else {
       const parentElements = document.querySelector('.elements');
@@ -55,8 +46,8 @@ const saveFormData = () => {
       newElementChildDiv.appendChild(newElementTitle);
       newElementChildDiv.appendChild(newElementLike);
 
-      newElementImg.alt = textName;
-      newElementImg.src = textProfession;
+      newElementImg.alt = formInputFirst.value;
+      newElementImg.src = formInputSecond.value;
       newElementImg.classList.add('elements__element__image');
       newElementImg.id = `img-${elementRoot.children.length}`;
 
@@ -65,7 +56,7 @@ const saveFormData = () => {
       }
 
       newElementTitle.classList.add('element__title');
-      newElementTitle.textContent = textName || "Фото";
+      newElementTitle.textContent = formInputFirst.value || "Фото";
       newElementTitle.id = `txt-${elementRoot.children.length}`;
 
       newElementLike.classList.add('elements__element__like-button');
@@ -81,12 +72,11 @@ const saveFormData = () => {
         cardTitle: newElementImg.alt
       })
 
-      updateCardOnclickFunc();
       updateLikeBtnOnclickFunc();
       updateCardImageOnclickFunc();
       removeCardFunc();
     }
-    modalWindow.classList.remove('body__modal_visible');
+    hideModalFunc();
   };
 }
 

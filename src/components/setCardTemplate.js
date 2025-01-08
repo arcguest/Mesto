@@ -70,7 +70,6 @@ const setCardTemplate = () => {
   
   pickedCardArray = document.querySelectorAll('.elements__element');
   
-  updateCardOnclickFunc();
   updateLikeBtnOnclickFunc();
   updateCardImageOnclickFunc();
   removeCardFunc();
