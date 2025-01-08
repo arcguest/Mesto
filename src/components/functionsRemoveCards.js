@@ -9,6 +9,8 @@ function removeCardFunc() {
             imageFullScreen.classList.add('body__imageFull_disabled');
             buttonSubmit.classList.add('body__form__button_disabled');
             confirmBtnCardRmv.classList.remove('body__confirmation_card-removing_disabled');
+            window.addEventListener('wheel', preventScrollingWheelFunc, { passive: false });
+            window.addEventListener('keydown', preventScrollingArrowFunc, { passive: false });
         }
     });
 }

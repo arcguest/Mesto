@@ -3,7 +3,7 @@ function preventScrollingWheelFunc(e) {
 }
 
 function preventScrollingArrowFunc(e) {
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();
     }
 }

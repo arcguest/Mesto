@@ -1,8 +1,54 @@
 const saveFormData = () => {
-  formInputs.forEach((input) => {
-    input.oninput = () => {
-      if (Array.from(formInputs).some((el) => el.value.length < 2)) return buttonSubmit.classList.add('body__form__button_disabled');
+  const formInputsArray = Array.from(formInputs);
+  const regexpPattern = new RegExp('^[a-zA-Zа-яА-Я\-_ ]+$')
+  const regexpPatternLink = new RegExp('^[a-zA-Zа-яА-Я0-9\-_ /.:]+$')
+  let btnReady = true;
 
+  formInputs.forEach((input) => {
+    input.oninput = (e) => {
+      btnEnterPreventDefault = true;
+      const inputLengthCheck = formInputsArray.some((el) => el.value.length < 2 && !el.classList.contains('body__form__input_disabled'));
+
+      if (input.classList.contains('body__form__input_name') || input.classList.contains('body__form__input_profession') || input.classList.contains('body__form__input_img-name')) {
+        if (!regexpPattern.test(input.value)) {
+          input.classList.add('input__error');
+          btnReady = false;
+        } else {
+          input.classList.remove('input__error');
+          btnReady = true;
+        }
+      }
+
+      if (input.classList.contains('body__form__input_img-link')) {
+        const inputLinkCheck = regexpPatternLink.test(input.value);
+        const inputValue = input.value.trim();
+        if (!inputLinkCheck) return;
+
+        const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.svg'];
+
+        try {
+          const url = new URL(inputValue);
+          btnReady = true;
+          input.classList.remove('input__error');
+          const isImageLink = imageExtensions.some(ext => url.pathname.toLowerCase().endsWith(ext));
+
+          if (isImageLink) {
+            btnReady = true;
+          } else {
+            btnReady = false;
+          }
+          
+        } catch (_) {
+          btnReady = false;
+          input.classList.add('input__error');
+        }
+      }
+
+      if (inputLengthCheck || !btnReady) {
+        buttonSubmit.classList.add('body__form__button_disabled');
+        return
+      }
+      btnEnterPreventDefault = false;
       buttonSubmit.classList.remove('body__form__button_disabled');
     }
   });
@@ -11,14 +57,14 @@ const saveFormData = () => {
     e.preventDefault();
 
     if (buttonSaveForm.textContent === "Сохранить") {
-      if (formInputFirst) {
+      if (formInputName) {
 
         if (profileTitle) {
-          profileTitle.textContent = formInputFirst.value;
+          profileTitle.textContent = formInputName.value;
         };
 
         if (profileSubtitle) {
-          profileSubtitle.textContent = formInputSecond.value;
+          profileSubtitle.textContent = formInputProfession.value;
         };
 
       };
@@ -46,8 +92,8 @@ const saveFormData = () => {
       newElementChildDiv.appendChild(newElementTitle);
       newElementChildDiv.appendChild(newElementLike);
 
-      newElementImg.alt = formInputFirst.value;
-      newElementImg.src = formInputSecond.value;
+      newElementImg.alt = formInputImgName.value;
+      newElementImg.src = formInputImgLink.value;
       newElementImg.classList.add('elements__element__image');
       newElementImg.id = `img-${elementRoot.children.length}`;
 
@@ -56,7 +102,7 @@ const saveFormData = () => {
       }
 
       newElementTitle.classList.add('element__title');
-      newElementTitle.textContent = formInputFirst.value || "Фото";
+      newElementTitle.textContent = formInputImgName.value || "Фото";
       newElementTitle.id = `txt-${elementRoot.children.length}`;
 
       newElementLike.classList.add('elements__element__like-button');

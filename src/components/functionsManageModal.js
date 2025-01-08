@@ -15,5 +15,10 @@ function hideModalFunc() {
     buttonSubmit.classList.add('body__form__button_disabled');
     confirmBtnCardRmv.classList.add('body__confirmation_card-removing_disabled');
     activateScrolling();
+    pickedCardId = 0;
+    formInputImgName.classList.add('body__form__input_disabled');
+    formInputImgLink.classList.add('body__form__input_disabled');
+    formInputName.classList.add('body__form__input_disabled');
+    formInputProfession.classList.add('body__form__input_disabled');
 }
 

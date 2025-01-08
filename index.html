@@ -43,8 +43,10 @@
     </div>
     <form class="body__form body__form_disabled">
       <h2 class="body__form__header">Редактировать профиль</h2>
-      <input type="text" name="name" class="body__form__input" placeholder="Жак-Ив-Кусто" required>
-      <input type="text" name="profession" class="body__form__input" placeholder="Исследователь океана" required>
+      <input type="text" name="name" class="body__form__input body__form__input_name body__form__input_disabled" placeholder="Жак-Ив-Кусто" required>
+      <input type="text" name="profession" class="body__form__input body__form__input_profession body__form__input_disabled" placeholder="Исследователь океана" required>
+      <input type="text" name="imgName" class="body__form__input body__form__input_img-name body__form__input_disabled" placeholder="Название" required>
+      <input type="url" name="imgLink" class="body__form__input body__form__input_img-link body__form__input_disabled" placeholder="Ссылка на картинку" required>
       <button class="body__form__button ">Сохранить</button>
       <img src="src/images/closeButton.svg" alt="Закрыть форму" class="body__form__button-close button__overlay_hide">
     </form>
@@ -78,7 +80,7 @@
   <script src="src/components/functionsManageModal.js"></script>
   <script src="src/components/functionsSwitchImages.js"></script>
   <script src="src/components/setCardTemplate.js"></script>
-  <script src="src/components/saveFormData.js"></script>
+  <script src="src/components/manageFormData.js"></script>
   <script src="src/components/changeModalVisibility.js"></script>
   <script src="src/components/changeFullScreenImgs.js"></script>
   <script src="src/components/confirmCardRemoving.js"></script>

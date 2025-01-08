@@ -6,16 +6,20 @@ const changeModalVisibility = () => {
 
       if (btn.classList.contains('profile__info_edit-btn-container')) {
         formTitle.textContent = "Редактировать профиль";
-        formInputFirst.value = profileTitle.textContent;
-        formInputSecond.value = profileSubtitle.textContent;
+        formInputName.value = profileTitle.textContent;
+        formInputProfession.value = profileSubtitle.textContent;
         buttonSaveForm.textContent = "Сохранить";
+        formInputName.classList.remove('body__form__input_disabled');
+        formInputProfession.classList.remove('body__form__input_disabled');
       } else {
         formTitle.textContent = "Новое место";
-        formInputFirst.value = "";
-        formInputSecond.value = "";
-        formInputFirst.placeholder = "Название";
-        formInputSecond.placeholder = "Ссылка на картинку";
+        formInputImgName.value = "";
+        formInputImgLink.value = "";
+        formInputImgName.placeholder = "Название";
+        formInputImgLink.placeholder = "Ссылка на картинку";
         buttonSaveForm.textContent = "Добавить";
+        formInputImgName.classList.remove('body__form__input_disabled');
+        formInputImgLink.classList.remove('body__form__input_disabled');
       }
       hideScrollingBarFunc();
     }
@@ -33,6 +37,12 @@ const changeModalVisibility = () => {
   document.addEventListener('keyup', (e) => {
     if (e.key === 'Escape') {
       hideModalFunc();
+    }
+  })
+
+  document.querySelector('.body__form').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && btnEnterPreventDefault) {
+      e.preventDefault();
     }
   })
 }

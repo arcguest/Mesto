@@ -6,8 +6,12 @@ let pickedCardId;
 let cardImages;
 let likeBtnArray;
 let removeCardBtnArray;
+let btnEnterPreventDefault = true;
 
 const modalWindow = document.querySelector('.body__modal');
+
+const profileTitle = document.querySelector('.profile__info_inputs_title');
+const profileSubtitle = document.querySelector('.profile__info_inputs_subtitle');
 
 const imageFullScreen = document.querySelector('.body__imageFull');
 const imageFullScreenContainer = document.querySelector('.body__imageFull_container');
@@ -23,13 +27,14 @@ const btnOverlayHide = document.querySelectorAll('.button__overlay_hide');
 const overlayWindow = document.querySelector('.body__overlay');
 
 const formTitle = document.querySelector('.body__form__header');
-const formInputFirst = document.querySelector('input[name="name"]');
-const formInputSecond = document.querySelector('input[name="profession"]');
+const formInputName = document.querySelector('input[name="name"]');
+const formInputProfession = document.querySelector('input[name="profession"]');
+const formInputImgName = document.querySelector('input[name="imgName"]');
+const formInputImgLink = document.querySelector('input[name="imgLink"]');
 const formInputs = document.querySelectorAll('.body__form__input');
 const form = document.querySelector('.body__form');
 
-const profileTitle = document.querySelector('.profile__info_inputs_title');
-const profileSubtitle = document.querySelector('.profile__info_inputs_subtitle');
+
 const buttonSubmit = document.querySelector('.body__form__button');
 
 const buttonSaveForm = document.querySelector('.body__form__button');
