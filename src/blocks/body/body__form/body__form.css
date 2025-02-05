@@ -1,6 +1,6 @@
 .body__form{
   width: 430px;
-  height: 330px;
+  min-height: 330px;
   background-color: white;
   position: fixed;
   top: 50%;

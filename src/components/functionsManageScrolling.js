@@ -8,11 +8,11 @@ function preventScrollingArrowFunc(e) {
     }
 }
 
-function hideScrollingBarFunc(e) {
+function hideScrollingBarFunc() {
     bodyElement.style.overflow = 'hidden';
 }
 
-function activateScrolling(e) {
+function activateScrolling() {
     window.removeEventListener('wheel', preventScrollingWheelFunc, { passive: false });
     window.removeEventListener('keydown', preventScrollingArrowFunc, { passive: false });
     bodyElement.style.overflow = 'auto';

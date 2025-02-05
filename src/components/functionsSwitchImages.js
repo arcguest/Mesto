@@ -1,6 +1,8 @@
 function switchImagesByKeyFunc(e) {
     let nextIndex;
     if (e.key === 'ArrowLeft') {
+        if (!form.classList.contains('body__form_disabled')) return;
+
         if (cardsArr.length <= pickedCardId + 1) {
             nextIndex = 0;
             pickedCardId = 0;
@@ -11,6 +13,8 @@ function switchImagesByKeyFunc(e) {
         imageFullScreenImage.src = `${cardsArr[nextIndex].cardImg}`;
         imageFullScreenTitle.textContent = cardsArr[nextIndex].cardTitle;
     } else if (e.key === 'ArrowRight') {
+        if (!form.classList.contains('body__form_disabled')) return;
+        
         if (pickedCardId <= 0) {
             nextIndex = cardsArr.length - 1;
             pickedCardId = cardsArr.length - 1;

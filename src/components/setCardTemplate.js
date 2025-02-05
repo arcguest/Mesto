@@ -65,7 +65,7 @@ const setCardTemplate = () => {
     addBottom.appendChild(addTitle);
     addBottom.appendChild(addLikeButton);
 
-    elementRoot.insertBefore(addCard, elementRoot.firstChild);
+    elementRoot.insertBefore(addCard, elementRoot.firstChild); 
   }
   
   pickedCardArray = document.querySelectorAll('.elements__element');

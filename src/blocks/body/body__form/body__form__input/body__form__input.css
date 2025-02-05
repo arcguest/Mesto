@@ -3,7 +3,13 @@
   margin: 0 auto 30px;
   border: none;
   outline: none;
-  border-bottom: 1px solid ;  
+  border-bottom: 1px solid grey;  
+  padding: 10px 0;
+  transition: .3s ease-in-out;
+}
+
+.input__focus {
+  border-bottom-color: black;
 }
 
 .input__error {
