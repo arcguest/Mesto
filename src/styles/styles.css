@@ -1,6 +1,6 @@
 @import url(../../vendor/normalize.css);
 @import url(../../vendor/fonts.css);
-@import url(buttons-default.css);
+@import url(./buttons-default.css);
 @import url(../blocks/body/body.css);
 @import url(../blocks/body/body__overlay/body__overlay.css);
 @import url(../blocks/body/body__form/body__form.css);

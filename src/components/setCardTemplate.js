@@ -1,5 +1,11 @@
-const setCardTemplate = () => {
-  cardsArr = [
+import { removeCard } from "./removeCards";
+import { updateCardImageOnclick, updateLikeBtnOnclick } from "./manageCards";
+import { cards } from "./variables";
+import deleteCardButton from '../images/delete.png';
+import likeCardButton from '../images/like.svg';
+
+export function setCardTemplate() {
+  cards.fullList = [
     {
       cardImg: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       cardTitle: 'Луг с цветами',
@@ -26,37 +32,37 @@ const setCardTemplate = () => {
     },
   ];
 
-  for (let i = 0; i < cardsArr.length; i++) {
+  for (let i = 0; i < cards.fullList.length; i++) {
     const addCard = document.createElement('div');
     addCard.classList.add('elements__element');
-    addCard.id = `cardId-${elementRoot.children.length}`;
+    addCard.id = `cardId-${cards.elementRoot.children.length}`;
 
     const addBottom = document.createElement('div');
     addBottom.classList.add('elements__element__bottom');
 
     const addTitle = document.createElement('h2');
     addTitle.classList.add('element__title');
-    addTitle.textContent = cardsArr[i].cardTitle;
-    addTitle.id = `txt-${elementRoot.children.length}`;
+    addTitle.textContent = cards.fullList[i].cardTitle;
+    addTitle.id = `txt-${cards.elementRoot.children.length}`;
 
     const addLikeButton = document.createElement('img');
     addLikeButton.classList.add('elements__element__like-button');
-    addLikeButton.src = 'src/images/like.svg';
+    addLikeButton.src = likeCardButton;
     addLikeButton.alt = 'Нравится';
-    addLikeButton.id = `likeBtn-${elementRoot.children.length}`;
+    addLikeButton.id = `likeBtn-${cards.elementRoot.children.length}`;
 
     const addImage = document.createElement('img');
     addImage.classList.add('elements__element__image');
-    addImage.src = cardsArr[i].cardImg;
-    addImage.alt = cardsArr[i].cardTitle;
-    addImage.id = `img-${elementRoot.children.length}`;
+    addImage.src = cards.fullList[i].cardImg;
+    addImage.alt = cards.fullList[i].cardTitle;
+    addImage.id = `img-${cards.elementRoot.children.length}`;
 
     const addDeleteButton = document.createElement('img');
     addDeleteButton.classList.add('elements__element__delete');
-    addDeleteButton.src = 'src/images/delete.png';
+    addDeleteButton.src = deleteCardButton;
     addDeleteButton.style.top = '10px';
     addDeleteButton.style.right = '10px';
-    addDeleteButton.id = `rmvBtn-${elementRoot.children.length}`;
+    addDeleteButton.id = `rmvBtn-${cards.elementRoot.children.length}`;
 
     addCard.appendChild(addDeleteButton);
     addCard.appendChild(addImage);
@@ -65,14 +71,17 @@ const setCardTemplate = () => {
     addBottom.appendChild(addTitle);
     addBottom.appendChild(addLikeButton);
 
-    elementRoot.insertBefore(addCard, elementRoot.firstChild); 
+    cards.elementRoot.insertBefore(addCard, cards.elementRoot.firstChild);
   }
-  
-  pickedCardArray = document.querySelectorAll('.elements__element');
-  
-  updateLikeBtnOnclickFunc();
-  updateCardImageOnclickFunc();
-  removeCardFunc();
+
+  // cards.pickedCard = document.querySelectorAll('.elements__element');
+  // cards.cardImages = document.querySelectorAll('.elements__element__image');
+  // cards.likeBtnArray = document.querySelectorAll('.elements__element__like-button');
+  // cards.removeCardBtnArray = document.querySelectorAll('.elements__element__delete');
+
+  updateLikeBtnOnclick();
+  updateCardImageOnclick();
+  removeCard();
 }
 
-setCardTemplate();
+

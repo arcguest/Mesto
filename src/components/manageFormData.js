@@ -1,11 +1,15 @@
-const saveFormData = () => {
+import { updateLikeBtnOnclick, updateCardImageOnclick } from "./manageCards";
+import { removeCard } from "./removeCards";
+import { hideModal } from "./manageModals";
+import { cards, formInputs, formInputName, formInputImgLink, formInputImgName, formInputProfession, profileTitle, profileSubtitle, buttonSubmit, buttonSaveForm } from "./variables";
+import deleteCardButton from '../images/delete.png';
+import likeCardButton from '../images/like.svg';
+
+export function saveFormData() {
   const formInputsArray = Array.from(formInputs);
-  const regexpPattern = new RegExp('^[a-zA-Zа-яА-Я\-_ /.:]+$');
-  const regexpPatternLink = new RegExp('^[a-zA-Zа-яА-Я0-9\-_ /.:]+$')
-  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.svg'];
+  const regexpPattern = new RegExp('^[a-zA-Zа-яА-Я\-_ ]+$');
   let btnReady = true;
   let matchTextPattern = false;
-  let isUrl = true;
   const profileFormInputs = [];
   const cardFormInputs = [];
 
@@ -30,30 +34,58 @@ const saveFormData = () => {
     }
 
     input.oninput = () => {
+      let isUrl = false;
+      let testBool = false;
+
       if (input.classList.contains('body__form__input_profile')) {
+
         matchTextPattern = profileFormInputs.every(el => regexpPattern.test(el.value));
-      } else if (input.classList.contains('body__form__input_card')) {
-        matchTextPattern = cardFormInputs.every(el => regexpPattern.test(el.value));
 
-        if (input.classList.contains('body__form__input_img-link')) {
-          const inputValue = input.value.trim();
-          isUrl = inputValue.startsWith('http') && inputValue.includes('://');
+        if (!regexpPattern.test(input.value)) {
+          input.classList.add('input__error');
+        } else {
+          input.classList.remove('input__error');
         }
+
+      } else if (input.classList.contains('body__form__input_card')) {
+
+        cardFormInputs.forEach(el => {
+          if (el.classList.contains('body__form__input_img-link')) {
+            const inputValue = el.value;
+            isUrl = inputValue.startsWith('http') && inputValue.includes('://');
+
+            if (!isUrl) {
+              el.classList.add('input__error');
+            } else {
+              el.classList.remove('input__error');
+            }
+          } else {
+            matchTextPattern = regexpPattern.test(el.value);
+
+            if (!regexpPattern.test(el.value)) {
+              el.classList.add('input__error');
+            } else {
+              el.classList.remove('input__error');
+            }
+          }
+        });
+
+        testBool = cardFormInputs.every(el => {
+          return !el.classList.contains('input__error')
+        })
+
       }
 
-      if (!regexpPattern.test(input.value)) {
-        input.classList.add('input__error');
-      } else {
-        input.classList.remove('input__error');
-      }
-
-      if (!matchTextPattern || !isUrl) {      
+      if (!isUrl || (!testBool)) {
         btnReady = false;
       } else {
         btnReady = true;
       }
 
-      btnEnterPreventDefault = true;
+      console.log('testBool',testBool)
+      console.log('btnReady',btnReady)
+
+      cards.btnEnterPreventDefault = true;
       const inputLengthCheck = formInputsArray.some((el) => el.value.length < 2 && !el.classList.contains('body__form__input_disabled'));
 
       if (inputLengthCheck || !btnReady) {
@@ -61,38 +93,10 @@ const saveFormData = () => {
         return
       }
 
-      btnEnterPreventDefault = false;
+      cards.btnEnterPreventDefault = false;
       buttonSubmit.classList.remove('body__form__button_disabled');
     }
   });
-
-  //   const isImageLink = formInputsArray.some((el) => {
-  //     return !el.classList.contains('body__form__input_disabled') && el.classList.contains('body__form__input_img-link') && imageExtensions.some(ext => el.value.toLowerCase().endsWith(ext));
-  // })
-
-
-
-  // if (input.classList.contains('body__form__input_img-link')) {
-  //   const inputLinkCheck = regexpPatternLink.test(input.value);
-  //   const inputValue = input.value.trim();
-  //   if (!inputLinkCheck) return;
-  //   btnReady = true;
-  //   try {
-  //     const url = new URL(inputValue);
-  //     btnReady = true;
-  //     input.classList.remove('input__error');
-  //   } catch (err) {
-  //     btnReady = false;
-  //     input.classList.add('input__error');
-  //   }
-  // }
-
-
-
-
-
-
-
 
   buttonSubmit.onclick = (e) => {
     e.preventDefault();
@@ -119,16 +123,16 @@ const saveFormData = () => {
       const newDeleteButton = document.createElement('img');
 
       newElement.classList.add('elements__element');
-      newElement.id = `cardId-${elementRoot.children.length}`;
+      newElement.id = `cardId-${cards.elementRoot.children.length}`;
       newElement.appendChild(newElementImg);
       newElement.appendChild(newElementChildDiv);
       newElement.appendChild(newDeleteButton);
 
       newDeleteButton.classList.add('elements__element__delete');
-      newDeleteButton.src = 'src/images/delete.png';
+      newDeleteButton.src = deleteCardButton;
       newDeleteButton.style.top = '10px';
       newDeleteButton.style.right = '10px';
-      newDeleteButton.id = `rmvBtn-${elementRoot.children.length}`;
+      newDeleteButton.id = `rmvBtn-${cards.elementRoot.children.length}`;
 
       newElementChildDiv.appendChild(newElementTitle);
       newElementChildDiv.appendChild(newElementLike);
@@ -136,38 +140,40 @@ const saveFormData = () => {
       newElementImg.alt = formInputImgName.value;
       newElementImg.src = formInputImgLink.value;
       newElementImg.classList.add('elements__element__image');
-      newElementImg.id = `img-${elementRoot.children.length}`;
+      newElementImg.id = `img-${cards.elementRoot.children.length}`;
 
       newElementImg.onerror = () => {
-        newElementImg.src = "https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg";
+        newElementImg.src = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
       }
 
       newElementTitle.classList.add('element__title');
       newElementTitle.textContent = formInputImgName.value || "Фото";
-      newElementTitle.id = `txt-${elementRoot.children.length}`;
+      newElementTitle.id = `txt-${cards.elementRoot.children.length}`;
 
       newElementLike.classList.add('elements__element__like-button');
-      newElementLike.src = "src/images/like.svg";
+      newElementLike.src = likeCardButton;
       newElementLike.alt = "Нравится";
-      newElementLike.id = `likeBtn-${elementRoot.children.length}`;
+      newElementLike.id = `likeBtn-${cards.elementRoot.children.length}`;
 
       newElementChildDiv.classList.add('elements__element__bottom');
 
       parentElements.insertBefore(newElement, parentElements.firstChild);
-      cardsArr.push({
+
+      cards.fullList.push({
         cardImg: newElementImg.src,
         cardTitle: newElementImg.alt
       })
 
-      updateLikeBtnOnclickFunc();
-      updateCardImageOnclickFunc();
-      removeCardFunc();
+      cards.cardImages = document.querySelectorAll('.elements__element__image');
+
+      updateLikeBtnOnclick();
+      updateCardImageOnclick();
+      removeCard();
     }
-    hideModalFunc();
+    hideModal();
   };
 }
 
-saveFormData();
 
 
 
