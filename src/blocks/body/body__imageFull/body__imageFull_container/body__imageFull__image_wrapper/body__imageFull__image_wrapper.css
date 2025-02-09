@@ -1,7 +1,0 @@
-.body__imageFull__image_wrapper{
-  max-width: 75vw;
-  max-height: 75vh;
-  position: relative;
-  margin: 0;
-  transition: transform 0.2s ease-in-out;
-}
