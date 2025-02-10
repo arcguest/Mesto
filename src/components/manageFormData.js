@@ -34,8 +34,8 @@ export function saveFormData() {
     }
 
     input.oninput = () => {
-      let isUrl = false;
-      let testBool = false;
+      let isUrl = true;
+      let activateBtn = false;
 
       if (input.classList.contains('body__form__input_profile')) {
 
@@ -47,6 +47,9 @@ export function saveFormData() {
           input.classList.remove('input__error');
         }
 
+        activateBtn = profileFormInputs.every(el => {
+          return !el.classList.contains('input__error')
+        })
       } else if (input.classList.contains('body__form__input_card')) {
 
         cardFormInputs.forEach(el => {
@@ -70,20 +73,16 @@ export function saveFormData() {
           }
         });
 
-        testBool = cardFormInputs.every(el => {
+        activateBtn = cardFormInputs.every(el => {
           return !el.classList.contains('input__error')
         })
-
       }
 
-      if (!isUrl || (!testBool)) {
+      if (!activateBtn || !isUrl) {
         btnReady = false;
       } else {
         btnReady = true;
       }
-
-      console.log('testBool',testBool)
-      console.log('btnReady',btnReady)
 
       cards.btnEnterPreventDefault = true;
       const inputLengthCheck = formInputsArray.some((el) => el.value.length < 2 && !el.classList.contains('body__form__input_disabled'));
