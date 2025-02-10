@@ -1,0 +1,23 @@
+.body__confirmation_card-removing_btn {
+  width: 150px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.body__confirmation_card-removing_btn:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 635px) {
+  .body__confirmation_card-removing_btn{
+    width: 100px;
+    height: 35px;
+  }
+}
