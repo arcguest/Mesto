@@ -6,7 +6,6 @@
  - БЭМ
  - Grid
  - Flex
- - Webpack
 
 ### Pages:
 
