@@ -21,6 +21,6 @@
 @media screen and (max-width: 635px) {
   .body__form{
     width: 282px;
-    height: 322px;
+    min-height: 322px;
   }
 }

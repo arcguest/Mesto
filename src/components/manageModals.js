@@ -33,7 +33,7 @@ export function changeModalVisibility() {
         btn.onclick = () => {
             openModal();
 
-            if (btn.classList.contains('profile__info_edit-btn-container')) {
+            if (btn.classList.contains('profile__info_top_edit-btn-container')) {
                 formTitle.textContent = "Редактировать профиль";
                 formInputName.value = profileTitle.textContent;
                 formInputProfession.value = profileSubtitle.textContent;

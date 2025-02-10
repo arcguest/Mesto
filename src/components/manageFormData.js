@@ -78,6 +78,15 @@ export function saveFormData() {
         })
       }
 
+      if (input.classList.contains('input__error')) {
+        if (input.classList.contains('body__form__input_img-link')) {
+          input.setCustomValidity('Требуется ссылка на картинку');
+        } else {
+          input.setCustomValidity('Доступные символы: А-Я A-Z - _');
+        }
+        input.reportValidity();
+      }
+
       if (!activateBtn || !isUrl) {
         btnReady = false;
       } else {

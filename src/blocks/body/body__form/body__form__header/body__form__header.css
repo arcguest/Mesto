@@ -1,13 +1,14 @@
 .body__form__header{
+  min-width: 358px;
   font-size: 24px;
   font-weight: 900;
-  margin: 0 0 54px;
-  padding: 34px 0 0 36px;
+  margin: 0 auto 54px;
+  padding: 34px 0 0;
 }
 
 @media screen and (max-width: 635px) {
   .body__form__header{
-    width: 238px;
+    min-width: 238px;
     font-size: 18px;
   }
 }

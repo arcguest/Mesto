@@ -1,0 +1,11 @@
+.profile__info_bottom {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+@media screen and (max-width: 635px) {
+    .profile__info_bottom {
+        justify-content: center;
+    }
+}

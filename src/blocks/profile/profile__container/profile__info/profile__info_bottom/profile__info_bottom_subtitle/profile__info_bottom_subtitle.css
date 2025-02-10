@@ -1,4 +1,4 @@
-.profile__info_inputs_subtitle{
+.profile__info_bottom_subtitle {
   font-size: 18px;
   font-weight: 400;
   color: white;
@@ -9,8 +9,3 @@
   margin: 16px 0 0;
 }
 
-@media screen and (max-width: 635px) {
-  .profile__info_inputs_subtitle{
-
-  }
-}

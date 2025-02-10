@@ -1,6 +1,6 @@
 .body__form__button {
   width: 358px;
-  height: 50px;
+  min-height: 50px;
   background-color: black;
   color: white;
   margin: 18px 36px 37px;
@@ -24,7 +24,7 @@
 @media screen and (max-width: 635px) {
   .body__form__button{
     width: 238px;
-    height: 46px;
-    margin: 45px 22px 25px;
+    min-height: 46px;
+    margin: 45px 22px;
   }
 }

@@ -13,8 +13,8 @@ export const cards = {
 
 export const modalWindow = document.querySelector('.body__modal');
 
-export const profileTitle = document.querySelector('.profile__info_inputs_title');
-export const profileSubtitle = document.querySelector('.profile__info_inputs_subtitle');
+export const profileTitle = document.querySelector('.profile__info_top_title');
+export const profileSubtitle = document.querySelector('.profile__info_bottom_subtitle');
 
 export const imageFullScreen = document.querySelector('.body__imageFull');
 export const imageFullScreenContainer = document.querySelector('.body__imageFull_container');

@@ -28,11 +28,12 @@
 @import url(../blocks/profile/profile__container/profile__avatar/profile__avatar.css);
 @import url(../blocks/profile/profile__container/profile__avatar/profile__icon/profile__icon.css);
 @import url(../blocks/profile/profile__container/profile__info/profile__info.css);
-@import url(../blocks/profile/profile__container/profile__info/profile__info_inputs/profile__info_inputs.css);
-@import url(../blocks/profile/profile__container/profile__info/profile__info_inputs/profile__info_inputs_title/profile__info_inputs_title.css);
-@import url(../blocks/profile/profile__container/profile__info/profile__info_inputs/profile__info_inputs_subtitle/profile__info_inputs_subtitle.css);
-@import url(../blocks/profile/profile__container/profile__info/profile__info_edit-btn-container/profile__info_edit-btn-container.css);
-@import url(../blocks/profile/profile__container/profile__info/profile__info_edit-btn-container/profile__info_edit-btn-container_btn/profile__info_edit-btn-container_btn.css);
+@import url(../blocks/profile/profile__container/profile__info/profile__info_top/profile__info_top.css);
+@import url(../blocks/profile/profile__container/profile__info/profile__info_top/profile__info_top_title/profile__info_top_title.css);
+@import url(../blocks/profile/profile__container/profile__info/profile__info_bottom/profile__info_bottom.css);
+@import url(../blocks/profile/profile__container/profile__info/profile__info_bottom/profile__info_bottom_subtitle/profile__info_bottom_subtitle.css);
+@import url(../blocks/profile/profile__container/profile__info/profile__info_top/profile__info_top_edit-btn-container/profile__info_top_edit-btn-container.css);
+@import url(../blocks/profile/profile__container/profile__info/profile__info_top/profile__info_top_edit-btn-container/profile__info_top_edit-btn-container_btn/profile__info_top_edit-btn-container_btn.css);
 @import url(../blocks/profile/profile__button/profile__button.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/elements__element/elements__element.css);
