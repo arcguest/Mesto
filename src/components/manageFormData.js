@@ -122,64 +122,72 @@ export function saveFormData() {
 
       };
     } else {
-      const parentElements = document.querySelector('.elements');
-      const newElement = document.createElement('div');
-      const newElementImg = document.createElement('img');
-      const newElementChildDiv = document.createElement('div');
-      const newElementTitle = document.createElement('h2');
-      const newElementLike = document.createElement('img');
-      const newDeleteButton = document.createElement('img');
-
-      newElement.classList.add('elements__element');
-      newElement.id = `cardId-${cards.elementRoot.children.length}`;
-      newElement.appendChild(newElementImg);
-      newElement.appendChild(newElementChildDiv);
-      newElement.appendChild(newDeleteButton);
-
-      newDeleteButton.classList.add('elements__element__delete');
-      newDeleteButton.src = deleteCardButton;
-      newDeleteButton.style.top = '10px';
-      newDeleteButton.style.right = '10px';
-      newDeleteButton.id = `rmvBtn-${cards.elementRoot.children.length}`;
-
-      newElementChildDiv.appendChild(newElementTitle);
-      newElementChildDiv.appendChild(newElementLike);
-
-      newElementImg.alt = formInputImgName.value;
-      newElementImg.src = formInputImgLink.value;
-      newElementImg.classList.add('elements__element__image');
-      newElementImg.id = `img-${cards.elementRoot.children.length}`;
-
-      newElementImg.onerror = () => {
-        newElementImg.src = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
-      }
-
-      newElementTitle.classList.add('element__title');
-      newElementTitle.textContent = formInputImgName.value || "Фото";
-      newElementTitle.id = `txt-${cards.elementRoot.children.length}`;
-
-      newElementLike.classList.add('elements__element__like-button');
-      newElementLike.src = likeCardButton;
-      newElementLike.alt = "Нравится";
-      newElementLike.id = `likeBtn-${cards.elementRoot.children.length}`;
-
-      newElementChildDiv.classList.add('elements__element__bottom');
-
-      parentElements.insertBefore(newElement, parentElements.firstChild);
-
-      cards.fullList.push({
-        cardImg: newElementImg.src,
-        cardTitle: newElementImg.alt
-      })
-
-      cards.cardImages = document.querySelectorAll('.elements__element__image');
-
-      updateLikeBtnOnclick();
-      updateCardImageOnclick();
-      removeCard();
+      addNewCard();
     }
     hideModal();
   };
+}
+
+async function addNewCard() {
+  const parentElements = document.querySelector('.elements');
+  const newElement = document.createElement('div');
+  const newElementImg = document.createElement('img');
+  const newElementChildDiv = document.createElement('div');
+  const newElementTitle = document.createElement('h2');
+  const newElementLike = document.createElement('img');
+  const newDeleteButton = document.createElement('img');
+
+  newElement.classList.add('elements__element');
+  newElement.id = `cardId-${cards.elementRoot.children.length}`;
+  newElement.appendChild(newElementImg);
+  newElement.appendChild(newElementChildDiv);
+  newElement.appendChild(newDeleteButton);
+
+  newDeleteButton.classList.add('elements__element__delete');
+  newDeleteButton.src = deleteCardButton;
+  newDeleteButton.style.top = '10px';
+  newDeleteButton.style.right = '10px';
+  newDeleteButton.id = `rmvBtn-${cards.elementRoot.children.length}`;
+
+  newElementChildDiv.appendChild(newElementTitle);
+  newElementChildDiv.appendChild(newElementLike);
+
+  newElementImg.alt = formInputImgName.value;
+  newElementImg.src = formInputImgLink.value;
+  newElementImg.classList.add('elements__element__image');
+  newElementImg.id = `img-${cards.elementRoot.children.length}`;
+
+  await new Promise((resolve) => {
+    newElementImg.onload = resolve;
+    newElementImg.onerror = () => {
+      newElementImg.src = "https://www.huber-online.com/daisy_website_files/_processed_/8/0/csm_no-image_d5c4ab1322.jpg";
+      resolve();
+    }
+  })
+
+  newElementTitle.classList.add('element__title');
+  newElementTitle.textContent = formInputImgName.value || "Фото";
+  newElementTitle.id = `txt-${cards.elementRoot.children.length}`;
+
+  newElementLike.classList.add('elements__element__like-button');
+  newElementLike.src = likeCardButton;
+  newElementLike.alt = "Нравится";
+  newElementLike.id = `likeBtn-${cards.elementRoot.children.length}`;
+
+  newElementChildDiv.classList.add('elements__element__bottom');
+
+  parentElements.insertBefore(newElement, parentElements.firstChild);
+
+  cards.fullList.push({
+    cardImg: newElementImg.src,
+    cardTitle: newElementImg.alt
+  })
+
+  cards.cardImages = document.querySelectorAll('.elements__element__image');
+
+  updateLikeBtnOnclick();
+  updateCardImageOnclick();
+  removeCard();
 }
 
 

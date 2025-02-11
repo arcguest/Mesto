@@ -12,5 +12,4 @@ export function App() {
     saveFormData();
     changeModalVisibility();
     setupImagesSwitching();
-
 }
